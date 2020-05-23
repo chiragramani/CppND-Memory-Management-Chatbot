@@ -8,10 +8,10 @@ GraphNode::GraphNode(int id)
 
 GraphNode::~GraphNode()
 {
-    //// STUDENT CODE
+    //// DONE: STUDENT CODE
     ////
-
-    delete _chatBot; 
+    //// Since graph node doesn't own chatbot, it should not be involved in alloc/dealloc of chatbot. 
+    //delete _chatBot; 
 
     ////
     //// EOF STUDENT CODE
