@@ -107,6 +107,7 @@ END_EVENT_TABLE()
 ChatBotPanelDialog::ChatBotPanelDialog(wxWindow *parent, wxWindowID id)
     : wxScrolledWindow(parent, id)
 {
+    std::cout << "ChatBotPanelDialog Constructor" << std::endl;
     // sizer will take care of determining the needed scroll size
     _dialogSizer = new wxBoxSizer(wxVERTICAL);
     this->SetSizer(_dialogSizer);
@@ -114,11 +115,12 @@ ChatBotPanelDialog::ChatBotPanelDialog(wxWindow *parent, wxWindowID id)
     // allow for PNG images to be handled
     wxInitAllImageHandlers();
 
-    //// STUDENT CODE
+    //// DONE: STUDENT CODE
     ////
 
     // create chat logic instance
-    _chatLogic = new ChatLogic(); 
+    // using unique smart pointer
+    _chatLogic = std::make_unique<ChatLogic>();
 
     // pass pointer to chatbot dialog so answers can be displayed in GUI
     _chatLogic->SetPanelDialogHandle(this);
@@ -132,10 +134,11 @@ ChatBotPanelDialog::ChatBotPanelDialog(wxWindow *parent, wxWindowID id)
 
 ChatBotPanelDialog::~ChatBotPanelDialog()
 {
-    //// STUDENT CODE
+    std::cout << "ChatBotPanelDialog Destructor" << std::endl;
+    //// DONE: STUDENT CODE
     ////
-
-    delete _chatLogic;
+    /// Since we are using smart pointer, no need of explicit delete.
+    // delete _chatLogic;
 
     ////
     //// EOF STUDENT CODE
